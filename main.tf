@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "git::git@github.com:ORT-Obligatorio-Soluciones-Cloud/VPC.git?ref=v1.0"
+  source = "git::git@github.com:ORT-Obligatorio-Soluciones-Cloud/VPC.git?ref=v1.1"
 }
 
 module "loadbalancer" {
