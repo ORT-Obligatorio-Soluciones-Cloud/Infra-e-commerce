@@ -1,15 +1,15 @@
 module "vpc" {
-  source = "./Modules/vpc"
+  source = "git::git@github.com:ORT-Obligatorio-Soluciones-Cloud/VPC.git?ref=v1.0"
 }
 
 module "loadbalancer" {
-  source = "./Modules/lb"
+  source = "git::git@github.com:ORT-Obligatorio-Soluciones-Cloud/ALB.git?ref=v1.0"
   vpc_id = module.vpc.vpc_id
   public_subnet_ids = module.vpc.public_subnet_ids
 }
 
 module "autoscaling" {
-  source = "./Modules/autoscaling"
+  source = "git::git@github.com:ORT-Obligatorio-Soluciones-Cloud/Autoscaling.git?ref=v1.0"
   vpc_id = module.vpc.vpc_id
   public_subnet_ids = module.vpc.public_subnet_ids
   private_subnet_ids = module.vpc.private_subnet_ids
@@ -23,7 +23,7 @@ module "autoscaling" {
 }
 
 module "database" {
-  source = "./Modules/db"
+  source = "git::git@github.com:ORT-Obligatorio-Soluciones-Cloud/RDS.git?ref=v1.0"
   vpc_id = module.vpc.vpc_id
   private_subnet_rds_ids = module.vpc.private_subnet_rds_ids
   db_password = var.db_password
